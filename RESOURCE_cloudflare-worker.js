@@ -18,8 +18,18 @@ export default {
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
     const userInput = await request.json();
 
+    // The browser sends the full conversation on every request. Keeping all
+    // previous turns lets the model remember details such as a user's name
+    // and earlier product questions.
+    if (!Array.isArray(userInput.messages) || userInput.messages.length === 0) {
+      return new Response(
+        JSON.stringify({ error: 'Request must include a non-empty messages array.' }),
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
     const requestBody = {
-      model: 'gpt-4o',
+      model: 'gpt-4.1',
       messages: userInput.messages,
       max_completion_tokens: 300,
     };

@@ -11,4 +11,6 @@ L’Oréal is exploring the power of AI, and your job is to showcase what's poss
 
 When deploying through Cloudflare, make sure your API request body (in `script.js`) includes a `messages` array and handle the response by extracting `data.choices[0].message.content`.
 
+The [Cloudflare Worker source template](RESOURCE_cloudflare-worker.js) is included in this repository. It is not a deployed Worker URL; ask your instructor for the class-hosted URL.
+
 Enjoy building your L’Oréal beauty assistant! 💄
